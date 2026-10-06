@@ -1,0 +1,14 @@
+import {render,screen} from '@testing-library/react';import userEvent from '@testing-library/user-event';import {axe} from 'jest-axe';
+import App from '../src/App.jsx';
+test('has no axe violations',async()=>{const {container}=render(<App/>);expect(await axe(container)).toHaveNoViolations();});
+test('filter accordion toggles aria-expanded',async()=>{render(<App/>);const b=screen.getByRole('button',{name:'Category filters'});
+  expect(b).toHaveAttribute('aria-expanded','false');await userEvent.click(b);expect(b).toHaveAttribute('aria-expanded','true');});
+test('category chip toggles aria-pressed and filters results',async()=>{render(<App/>);await userEvent.click(screen.getByRole('button',{name:'Category filters'}));
+  const c=screen.getByRole('button',{name:'Events'});await userEvent.click(c);expect(c).toHaveAttribute('aria-pressed','true');expect(screen.getByText('1 resource found')).toBeInTheDocument();});
+test('search updates live count',async()=>{render(<App/>);await userEvent.type(screen.getByLabelText('Search by title'),'archive');expect(screen.getByText('1 resource found')).toBeInTheDocument();});
+test('view switch moves focus to heading',async()=>{render(<App/>);await userEvent.click(screen.getByRole('button',{name:'Book a room'}));
+  expect(screen.getByRole('heading',{name:'Reserve a study room'})).toHaveFocus();});
+test('invalid submit sets aria-invalid, announces and focuses first error',async()=>{render(<App/>);await userEvent.click(screen.getByRole('button',{name:'Book a room'}));
+  await userEvent.click(screen.getByRole('button',{name:'Confirm reservation'}));
+  const n=screen.getByLabelText('Full name');expect(n).toHaveAttribute('aria-invalid','true');expect(n).toHaveFocus();
+  expect(n.getAttribute('aria-describedby')).toContain('name-e');expect(screen.getByRole('alert')).toHaveTextContent('3 errors found');});

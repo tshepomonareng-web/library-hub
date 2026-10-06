@@ -1,0 +1,36 @@
+/* Contrast (WCAG 2.1 AA) — computed ratios
+   Body text #1A202C on #F7FAFC ........ 15.6:1 (min 4.5)
+   Body text #1A202C on #FFFFFF ........ 16.3:1
+   Muted text #4A5568 on #FFFFFF ....... 7.5:1
+   Link/primary #2B6CB0 on #FFFFFF ..... 5.4:1
+   White on button #2B6CB0 ............. 5.4:1
+   White on header #1A365D ............. 12.1:1
+   Error text #9B2C2C on #FFFFFF ....... 7.5:1
+   Large headings #1A365D on #F7FAFC ... 11.6:1 (min 3:1) */
+:root{--text:#1A202C;--muted:#4A5568;--bg:#F7FAFC;--card:#FFFFFF;--brand:#2B6CB0;--dark:#1A365D;--err:#9B2C2C}
+*{box-sizing:border-box}
+body{margin:0;font:1.125rem/1.6 system-ui,sans-serif;color:var(--text);background:var(--bg)}
+header,footer{background:var(--dark);color:#fff;padding:1rem 1.5rem}
+header a,footer a{color:#fff}
+nav ul{display:flex;flex-wrap:wrap;gap:1rem;list-style:none;padding:0;margin:.5rem 0 0}
+main{max-width:60rem;margin:0 auto;padding:1.5rem;display:grid;gap:1.5rem}
+h1,h2{color:var(--dark)}
+section,article,aside{background:var(--card);border:1px solid #CBD5E0;border-radius:.5rem;padding:1rem 1.25rem}
+a{color:var(--brand)}
+.skip-link{position:absolute;left:-999px}
+.skip-link:focus-visible{left:1rem;top:1rem;background:#fff;color:var(--dark);padding:.5rem}
+label{display:block;font-weight:600;margin-top:1rem}
+.hint{color:var(--muted);font-size:1rem;margin:.25rem 0}
+input,select,textarea{width:100%;padding:.6rem;font:inherit;border:2px solid var(--muted);border-radius:.25rem}
+button,.btn{background:var(--brand);color:#fff;border:0;padding:.7rem 1.2rem;font:inherit;font-weight:700;border-radius:.25rem;margin-top:1rem;text-decoration:none;display:inline-block}
+/* Visible focus: custom ring replaces default, never removed without replacement */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid #2B6CB0;outline-offset:2px}
+header a:focus-visible,footer a:focus-visible{outline-color:#FFFFFF} /* white on #1A365D 12.1:1 */
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.err{color:var(--err);font-weight:600;margin:.25rem 0}
+input[aria-invalid="true"]{border-color:var(--err)}
+.chips{display:flex;gap:.5rem;flex-wrap:wrap}
+.chips button[aria-pressed="true"]{background:var(--dark)}
+.chips button[aria-pressed="false"]{background:#fff;color:var(--dark);border:2px solid var(--dark)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+h1:focus{outline:none}
