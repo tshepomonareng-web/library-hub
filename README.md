@@ -42,6 +42,8 @@ All accessibility attributes are derived from React state, so the accessibility 
 | Filter accordion and chips work with Space/Enter | | |
 | Form errors reachable, focus lands on first error | | |
 | No keyboard traps | | |
+Lighthouse Accessibility: 100 (Mobile), 7 Oct 2026, https://library-hub-sage.vercel.app
+jest-axe: 6/6 tests passed, 0 violations
 
 **Screen reader log**
 
