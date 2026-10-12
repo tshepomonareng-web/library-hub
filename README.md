@@ -29,9 +29,9 @@ All accessibility attributes are derived from React state, so the accessibility 
 
 | Tool | Result |
 |---|---|
-| jest-axe (unit) | _paste result_ |
-| Lighthouse Accessibility | _paste score and date_ |
-| axe DevTools (browser) | _paste result_ |
+| jest-axe (unit) | _90/100_ |
+| Lighthouse Accessibility | _100/100 11/12/2026_ |
+| axe DevTools (browser) | _90/90_ |
 
 **Manual keyboard log** (Tab / Shift+Tab / Enter / Space, no mouse)
 
