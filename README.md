@@ -37,11 +37,11 @@ All accessibility attributes are derived from React state, so the accessibility 
 
 | Check | Pass? | Notes |
 |---|---|---|
-| Skip link is first stop and works | | |
-| Tab order matches visual order | | |
-| Filter accordion and chips work with Space/Enter | | |
-| Form errors reachable, focus lands on first error | | |
-| No keyboard traps | | |
+| Skip link is first stop and works |yes | |
+| Tab order matches visual order |yes | |
+| Filter accordion and chips work with Space/Enter |yes | |
+| Form errors reachable, focus lands on first error |yes| |
+| No keyboard traps |yes | |
 Lighthouse Accessibility: 100 (Mobile), 7 Oct 2026, https://library-hub-sage.vercel.app
 jest-axe: 6/6 tests passed, 0 violations
 
